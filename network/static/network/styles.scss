@@ -1,0 +1,27 @@
+$primary-theme: rgb(29, 155, 240);
+$nav-text: white;
+
+body {
+    background-color: lightgray;
+}
+
+.navbar-brand {
+    font-family: "Brush Script MT", cursive;
+    color: $nav-text;
+    font-size: 50px;
+    margin-left: 60px
+}
+
+.navbar {
+    background-color: $primary-theme;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: $nav-text;
+    margin: 2px 20px;
+}
+
+.body {
+    background-color: white;
+}

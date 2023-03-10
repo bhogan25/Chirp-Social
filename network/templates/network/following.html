@@ -1,0 +1,9 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block title %}Following{% endblock %}
+
+{% block body %}
+<h2>Posts From Users You Follow</h2>
+{% include "network/post-pagination.html" with page_obj=page_obj %}
+{% endblock %}

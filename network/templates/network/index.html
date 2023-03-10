@@ -1,0 +1,21 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h2>Post a Chirp</h2>
+    <div class="new-post-form-container">
+
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+
+        <form action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Post"/>
+        </form>
+
+    </div>
+    <hr>
+    <h2>All Chirps</h2>
+    {% include "network/post-pagination.html" with user=user page_obj=page_obj %}
+{% endblock %}
