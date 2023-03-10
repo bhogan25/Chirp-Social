@@ -1,0 +1,29 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block title %}Profile: {{ profile_user_obj.username }}{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/profile.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <h2>@<span id="profileUsername">{{ profile_user_obj.username }}</span></h2>
+    <p>
+        <div>Followers: <span id="followersCount">{{ profile_user_followers.count }}</span></div>
+        <div>Following: <span id="followingCount">{{ profile_user_following.count }}</span></div>
+
+        {% if user != profile_user_obj %}
+            {% if requester_following == False %}
+                <button id="followUnfollowButton">Follow</button>
+            {% else %}
+                <button id="followUnfollowButton">Unfollow</button>
+            {% endif %}
+        {% endif %}
+
+    </p>
+    <hr>
+    <h4>{{ profile_user_obj.username }}'s Posts</h4>
+    {% include "network/post-pagination.html" with page_obj=page_obj %}
+{% endblock %}
+

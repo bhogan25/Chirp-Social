@@ -1,0 +1,24 @@
+body {
+  background-color: lightgray;
+}
+
+.navbar-brand {
+  font-family: "Brush Script MT", cursive;
+  color: white;
+  font-size: 50px;
+  margin-left: 60px;
+}
+
+.navbar {
+  background-color: rgb(29, 155, 240);
+  flex-direction: column;
+}
+
+.nav-link {
+  color: white;
+  margin: 2px 20px;
+}
+
+.body {
+  background-color: white;
+}/*# sourceMappingURL=styles.css.map */
