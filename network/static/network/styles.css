@@ -1,5 +1,6 @@
 body {
   background-color: lightgray;
+  font-family: "Varela", sans-serif;
 }
 
 .navbar-brand {
@@ -17,6 +18,11 @@ body {
 .nav-link {
   color: white;
   margin: 2px 20px;
+  font-family: unset;
+}
+
+.container {
+  display: flex;
 }
 
 .body {

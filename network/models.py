@@ -24,7 +24,7 @@ class Follow(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey('User', on_delete=models.CASCADE, related_name="+")
-    content = models.TextField(max_length=280)
+    content = models.TextField(max_length=280, verbose_name='')
     like_count = models.PositiveIntegerField(default=0)                            # REMOVE
     datetime = models.DateTimeField(auto_now_add=True)
 

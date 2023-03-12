@@ -188,7 +188,7 @@ def follow(request):
         return JsonResponse({
             "error": f"Account with username '{target_username}' does not exist."
         }, status=400)
-    
+
     # FOLLOW
     if request.method == "PUT" and action == "follow":
 
