@@ -3,7 +3,10 @@
 
 {% block title %}Following{% endblock %}
 
+
+{% block header %}Posts From Users You Follow{% endblock %}
+
 {% block body %}
-<h2>Posts From Users You Follow</h2>
+
 {% include "network/post-pagination.html" with page_obj=page_obj %}
 {% endblock %}

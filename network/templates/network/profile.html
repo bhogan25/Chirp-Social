@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-    <h2>@<span id="profileUsername">{{ profile_user_obj.username }}</span></h2>
+    <h2>@<span id="profileUsername"><strong>{{ profile_user_obj.username }}</strong></span></h2>
     <p>
         <div>Followers: <span id="followersCount">{{ profile_user_followers.count }}</span></div>
         <div>Following: <span id="followingCount">{{ profile_user_following.count }}</span></div>
@@ -23,7 +23,7 @@
 
     </p>
     <hr>
-    <h4>{{ profile_user_obj.username }}'s Posts</h4>
+    <h4>Posts by <strong>{{ profile_user_obj.username }}</strong></h4>
     {% include "network/post-pagination.html" with page_obj=page_obj %}
 {% endblock %}
 
