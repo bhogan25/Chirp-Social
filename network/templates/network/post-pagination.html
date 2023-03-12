@@ -7,22 +7,22 @@
             <div class="card-body">
                 <h5 class=" card-title"></h5>
                 <div class="post-content-container" id="postContentContainer_{{ post.id }}">
+                    <span class="post-content card-text" id="postContent_{{ post.id }}" style="display: block">{{post.content}}</span>
                     {% if post.author == user %}
-                        <button class="post-content-edit-button btn btn-secondary my-2" id="postContentEditButton_{{ post.id }}">Edit</button>
-                        <textarea class="post-content-edit form-control" id="postContentEdit_{{ post.id }}" style="display: none">{{post.content}}</textarea>
-                        <button class="post-content-save-button btn btn-secondary my-2" id="postContentSaveButton_{{ post.id }}" style="display: none">Save</button>
+                        <textarea class="post-content-edit form-control" id="postContentEdit_{{ post.id }}" style="display: none"></textarea>
+                        <button class="post-content-button edit-button btn btn-secondary btn-sm my-2" id="postContentEditButton_{{ post.id }}">Edit</button>
+                        <button class="post-content-button save-button btn btn-outline-primary btn-sm my-2" id="postContentSaveButton_{{ post.id }}" style="display: none">Save</button>
                     {% endif %}
-                    <div class="post-content card-text" id="postContent_{{ post.id }}" style="display: block">{{post.content}}</div>
                 </div>
                 <div class="post-datetime" id="postDatetime_{{ post.id }}">{{post.datetime}}</div>
                 <div>
                     Likes: <span class="like-count" id="likeCount_{{ post.id }}">{{ post.likes }}</span>
                     {% if user not in post.users_liked and user.is_authenticated %}
-                        <button class="like-unlike-button btn btn-primary my-2" id="{{ post.id }}">Like</button>
+                        <button class="like-unlike-button btn btn-primary btn-sm my-2" id="{{ post.id }}">Like</button>
                     {% elif user in post.users_liked and user.is_authenticated %}
-                        <button class="like-unlike-button btn btn-secondary my-2" id="{{ post.id }}">Unlike</button>
+                        <button class="like-unlike-button btn btn-primary btn-sm my-2" id="{{ post.id }}">Unlike</button>
                     {% else %}
-                        <button class="like-unlike-button btn btn-secondary my-2" id="{{ post.id }}" disabled>Like</button>
+                        <button class="like-unlike-button btn btn-primary btn-sm my-2" id="{{ post.id }}" disabled>Like</button>
                     {% endif %}
                 </div>
             </div>

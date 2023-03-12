@@ -260,7 +260,7 @@ def like(request):
         try:
             Like.objects.get(user=request.user, post=target_post_obj).delete()
             return JsonResponse({
-                "message": f"{action} successfull"
+                "message": f"{action} successfull."
                 }, status=200)
         except Like.DoesNotExist:
             return JsonResponse({
@@ -307,7 +307,7 @@ def edit_post(request):
     
     if content == "":
         return JsonResponse({
-            "error": f"Must provide content to {action}"
+            "error": f"Must provide content to {action}."
         })
     
     if content == target_post_obj.content:
@@ -319,5 +319,5 @@ def edit_post(request):
     target_post_obj.save()
 
     return JsonResponse({
-        "message": f"{action} successfull"
+        "message": f"{action} successfull."
     }, status=202)

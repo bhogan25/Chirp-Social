@@ -2,33 +2,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Like Button Event Listeners
   const likeUnlikeButtons = document.querySelectorAll('.like-unlike-button');
-  
+
   for (let i = 0; i < likeUnlikeButtons.length; i++) {
     likeUnlikeButtons[i].onclick = likeOrUnlike;
   }
-  
+
   // Edit Button Event Listeners
-  const postContentEditButtons = document.querySelectorAll('.post-content-edit-button');
-  
+  const postContentEditButtons = document.querySelectorAll('.edit-button');
+
   for (let i = 0; i < postContentEditButtons.length; i++) {
-    const textarea = postContentEditButtons[i].nextElementSibling
+    // Get post id
+    postId = postContentEditButtons[i].id.split('_').pop();
     
-    // Save Button Event
-    textarea.nextElementSibling.onclick = editPost;
+    // Add Event Listener to Save Button
+    document.querySelector(`#postContentSaveButton_${postId}`).onclick = editPost;
 
     // Edit/Cancel Button Event
     postContentEditButtons[i].onclick = function(event) {
-      event.preventDefault;
-      
       // event.target is 'Edit' button
-      const textarea = event.target.nextElementSibling;
-      const saveButton = textarea.nextElementSibling;
-      const content = saveButton.nextElementSibling;
+      event.preventDefault;
+
+      // Get post id and corresponding post elements
+      const postId = event.target.id.split('_').pop();
+      const textarea = document.querySelector(`#postContentEdit_${postId}`);
+      const saveButton = document.querySelector(`#postContentSaveButton_${postId}`);
+      const content = document.querySelector(`#postContent_${postId}`);
 
       if (event.target.innerHTML == "Edit") {
+        // Set textarea value to content value
+        textarea.value = content.innerHTML;
+        console.log(textarea.value)
+
         // Edit Mode: Show textarea and save button, hide content
         textarea.style.display = "block";
-        saveButton.style.display = "block";
+        saveButton.style.display = "inline";
         content.style.display = "none";
         event.target.innerHTML = "Cancel";
 
@@ -110,13 +117,14 @@ function likeOrUnlike(event) {
 
 
 function editPost(event) {
+  // event.target is 'Save' button
   event.preventDefault;
 
-  // event.target is 'Save' button
-  const textarea = event.target.previousElementSibling;
-  const content = event.target.nextElementSibling;
-  const editCancelButton = textarea.previousElementSibling;
-  const postId = textarea.id.split('_').pop();
+  // Get post id and corresponding post elements
+  const postId = event.target.id.split('_').pop();
+  const textarea = document.querySelector(`#postContentEdit_${postId}`);
+  const content = document.querySelector(`#postContent_${postId}`);
+  const editCancelButton = document.querySelector(`#postContentEditButton_${postId}`);
   const newContent = textarea.value;
 
   fetch('/edit', {
