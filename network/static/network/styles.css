@@ -1,3 +1,9 @@
+.like-unlike-button, .post-content-button {
+  --bs-btn-padding-y: .10rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .80rem;
+}
+
 .btn-primary {
   --bs-btn-bg: rgb(29, 155, 240);
   --bs-btn-border-color: rgb(29, 155, 240);
@@ -11,12 +17,6 @@
   --bs-btn-border-color: rgb(29, 155, 240);
   --bs-btn-hover-bg: rgb(25, 129, 198);
   --bs-btn-hover-border-color: rgb(25, 129, 198);
-}
-
-.like-unlike-button, .post-content-button {
-  --bs-btn-padding-y: .10rem;
-  --bs-btn-padding-x: .5rem;
-  --bs-btn-font-size: .80rem;
 }
 
 .login-input {
@@ -66,10 +66,28 @@ h1 {
   padding: 3px 15px 10px 15px;
 }
 
+.post-author-link {
+  text-decoration: none !important;
+}
+
 .post {
   margin-bottom: 10px;
 }
 
 .like-count {
   font-weight: bold;
+}
+
+.error-body {
+  background-color: rgb(29, 155, 240);
+  position: relative;
+}
+
+.error-message {
+  position: absolute;
+  top: 300px;
+  width: 100%;
+  text-align: center;
+  font-size: xx-large;
+  color: white;
 }/*# sourceMappingURL=styles.css.map */

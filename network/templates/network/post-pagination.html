@@ -3,7 +3,7 @@
 <div class="post-group">
     {% for post in page_obj %}
         <div class="post card">
-            <div class="card-header post-author" id="postAuthor_{{ post.id }}">@<a href="{% url 'profile' post.author.username %}">{{post.author}}</a></div>
+            <div class="card-header post-author" id="postAuthor_{{ post.id }}">@<a class="post-author-link" href="{% url 'profile' post.author.username %}">{{post.author}}</a></div>
             <div class="card-body position-relative">
                 <h5 class=" card-title"></h5>
                 <div class="post-content-container mb-2" id="postContentContainer_{{ post.id }}">

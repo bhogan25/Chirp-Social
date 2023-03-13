@@ -16,7 +16,7 @@ from .forms import NewPostForm
 error_message = {
     "login_to_post": "You must be logged in to post.",
     "login_to_view_profile": "You must be logged in to view user profiles.",
-    "login_to_view_following": "You must be logged in to posts made by users you follow.",
+    "login_to_view_following": "You must be logged in to view 'following' posts.",
 }
 
 
@@ -30,7 +30,9 @@ def index(request):
             post.author = request.user
             post.save()
         else:
-            return HttpResponse(error_message["login_to_post"])
+            return render(request, "network/error-page.html", {
+                'message': error_message['login_to_post']
+            })
 
         return HttpResponseRedirect(reverse("index"))
 
@@ -107,7 +109,9 @@ def profile(request, username):
 
     # Tell user to login to view profiles
     if not request.user.is_authenticated:
-        return HttpResponse(error_message["login_to_view_profile"])
+        return render(request, "network/error-page.html", {
+                'message': error_message['login_to_view_profile']
+            })
 
     # Get profile User object
     profile_user_obj = get_object_or_404(User, username=username)
@@ -142,7 +146,9 @@ def following(request):
 
     # Tell user to login to view followed posts
     if not request.user.is_authenticated:
-        return HttpResponse(error_message["login_to_view_following"])
+        return render(request, "network/error-page.html", {
+                'message': error_message['login_to_view_following']
+            })
 
     # Get all follow objects with requester as the user
     follow_objs_qset = request.user.following.all()
