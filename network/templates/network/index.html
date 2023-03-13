@@ -1,21 +1,23 @@
 {% extends "network/layout.html" %}
 
 {% block body %}
+    {% if user.is_authenticated %}
     <h3>Post a Chirp</h3><img src="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAis8AAAAAAADZ/wAA4f8AAJbgAAB+vQAAzPoAAGicAACR8gBAsv8AHOX/AACy7QAAAAAAAAAAAAAAAAAAAAAAERERGBgREREREREYGBERERERERd3d3EREREXdERERxEREXRLu7u0cRERdLZ3dmtHERdLZzMyJrURF0tjZmIiZRF0u2I6qqo1GGZmI6AAAKWYoxM6ARERBREKqqAREREQERAAARERERERERERERERERERERERERERERERERERERH+vwAA/r8AAP4HAAD4AwAA8AEAAPAAAADgAAAA4AAAAMAAAACAAAAAAHwAAMD+AADh/wAA//8AAP//AAD//wAA" alt="tweety bird">
-    <div class="new-post-form-container">
-
-        {% if message %}
-            <div>{{ message }}</div>
-        {% endif %}
-
-        <form action="{% url 'index' %}" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input class="btn btn-primary my-2" type="submit" value="Post"/>
-        </form>
-
-    </div>
-    <hr>
+        <div class="new-post-form-container">
+            {% if message %}
+                <div>{{ message }}</div>
+            {% endif %}
+            <form action="{% url 'index' %}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input class="btn btn-primary my-2" type="submit" value="Post"/>
+            </form>
+        </div>
+        <hr>
+    {% endif %}
     <h1>All Chirps</h1>
+    {% if user.is_authenticated == False %}
+        <img src="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAis8AAAAAAADZ/wAA4f8AAJbgAAB+vQAAzPoAAGicAACR8gBAsv8AHOX/AACy7QAAAAAAAAAAAAAAAAAAAAAAERERGBgREREREREYGBERERERERd3d3EREREXdERERxEREXRLu7u0cRERdLZ3dmtHERdLZzMyJrURF0tjZmIiZRF0u2I6qqo1GGZmI6AAAKWYoxM6ARERBREKqqAREREQERAAARERERERERERERERERERERERERERERERERERERH+vwAA/r8AAP4HAAD4AwAA8AEAAPAAAADgAAAA4AAAAMAAAACAAAAAAHwAAMD+AADh/wAA//8AAP//AAD//wAA" alt="tweety bird">
+    {% endif %}
     {% include "network/post-pagination.html" with user=user page_obj=page_obj %}
 {% endblock %}

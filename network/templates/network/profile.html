@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-    <h2>@<span id="profileUsername"><strong>{{ profile_user_obj.username }}</strong></span></h2>
+    <h2>@<span><strong id="profileUsername">{{ profile_user_obj.username }}</strong></span></h2>
     <p>
         <div>Followers: <span id="followersCount">{{ profile_user_followers.count }}</span></div>
         <div>Following: <span id="followingCount">{{ profile_user_following.count }}</span></div>
@@ -24,6 +24,7 @@
     </p>
     <hr>
     <h4>Posts by <strong>{{ profile_user_obj.username }}</strong></h4>
+    <img src="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAis8AAAAAAADZ/wAA4f8AAJbgAAB+vQAAzPoAAGicAACR8gBAsv8AHOX/AACy7QAAAAAAAAAAAAAAAAAAAAAAERERGBgREREREREYGBERERERERd3d3EREREXdERERxEREXRLu7u0cRERdLZ3dmtHERdLZzMyJrURF0tjZmIiZRF0u2I6qqo1GGZmI6AAAKWYoxM6ARERBREKqqAREREQERAAARERERERERERERERERERERERERERERERERERERH+vwAA/r8AAP4HAAD4AwAA8AEAAPAAAADgAAAA4AAAAMAAAACAAAAAAHwAAMD+AADh/wAA//8AAP//AAD//wAA" alt="tweety bird">
     {% include "network/post-pagination.html" with page_obj=page_obj %}
 {% endblock %}
 

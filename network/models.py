@@ -25,11 +25,10 @@ class Follow(models.Model):
 class Post(models.Model):
     author = models.ForeignKey('User', on_delete=models.CASCADE, related_name="+")
     content = models.TextField(max_length=280, verbose_name='')
-    like_count = models.PositiveIntegerField(default=0)                            # REMOVE
     datetime = models.DateTimeField(auto_now_add=True)
 
 
-    def likable(self, user_obj):
+    def likable(self, user_obj):                                        # Not Needed anymore
         return not bool(Like.objects.filter(user=user_obj, post=self))
 
     def likes(self):

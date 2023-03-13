@@ -1,7 +1,39 @@
 $primary-theme: rgb(29, 155, 240);
+$primary-theme-darker: rgb(25, 129, 198);
 $nav-text: white;
 
 
+
+.btn-primary {
+    --bs-btn-bg: rgb(29, 155, 240);
+    --bs-btn-border-color: rgb(29, 155, 240);
+    --bs-btn-hover-bg: rgb(25, 129, 198);
+    --bs-btn-hover-border-color: rgb(25, 129, 198);
+}
+
+.btn-outline-primary {
+    --bs-btn-bg: white;
+    --bs-btn-color: rgb(29, 155, 240);
+    --bs-btn-border-color: rgb(29, 155, 240);
+    --bs-btn-hover-bg: rgb(25, 129, 198);
+    --bs-btn-hover-border-color: rgb(25, 129, 198);
+}
+
+
+%post-button {
+    --bs-btn-padding-y: .10rem;
+    --bs-btn-padding-x: .5rem;
+    --bs-btn-font-size: .80rem;
+}
+
+
+.login-input {
+    margin: 10px 0px;
+}
+
+.register-input {
+    margin: 10px 0px;
+}
 
 body {
     background-color: lightgray;
@@ -38,20 +70,22 @@ h1 {
     margin: 16px 0px;
 }
 
+.card-body {
+    padding: 3px 15px 10px 15px; 
+}
+
 .post {
     margin-bottom: 10px;
 }
 
-// .post-content-button-container {
-//     display: flex;
-// }
+.post-content-button {
+    @extend %post-button;
+}
 
-// .post-content-button .edit-button {
-//     justify-self: left;
-//     max-width: 45px;
-// }
+.like-unlike-button {
+    @extend %post-button;
+}
 
-// .post-content-button .save-button {
-//     justify-self: right;
-//     max-width: 45px;
-// }
+.like-count {
+    font-weight: bold;
+}

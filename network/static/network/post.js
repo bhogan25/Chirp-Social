@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (event.target.innerHTML == "Edit") {
         // Set textarea value to content value
         textarea.value = content.innerHTML;
-        console.log(textarea.value)
 
         // Edit Mode: Show textarea and save button, hide content
         textarea.style.display = "block";
@@ -53,9 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function likeOrUnlike(event) {
   event.preventDefault();
 
-  // Get HTML elements and text
-  const username = document.querySelector('#username').innerHTML;
-  const targetPostId = event.target.id;
+  // Get post id and HTML elements
+  const targetPostId = event.target.id.split("_").pop();
   const likeUnlikeButton = event.target;
   const likeCountElement = document.querySelector(`#likeCount_${targetPostId}`);
   let count = Number(likeCountElement.innerHTML);
@@ -147,7 +145,7 @@ function editPost(event) {
       content.style.display = "block";
 
       // Update Post Content
-      event.target.nextElementSibling.innerHTML = newContent;
+      content.innerHTML = newContent;
 
     } else {
       console.log('Request unsuccessfull')
