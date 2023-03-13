@@ -1,5 +1,6 @@
-__pycache__/
-migrations/__pycache__/
+network/__pycache__/*.pyc
+network/migrations/__pycache__/*.pyc
+project4/__pycache__/*.pyc
 
-*.pyc
-*.map
+
+network/static/network/*.map
