@@ -1,6 +1,14 @@
-network/__pycache__/*.pyc
-network/migrations/__pycache__/*.pyc
-project4/__pycache__/*.pyc
+network/__pycache__/
+network/migrations/__pycache__/
+project4/__pycache__/
 
 
-network/static/network/*.map
+# Ignore directories
+/network/__pycache__
+/network/migrations/__pycache__
+project4/__pycache__
+
+# Ignore file types
+*.pyc
+*.css.map
+*.env

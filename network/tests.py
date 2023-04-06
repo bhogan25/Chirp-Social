@@ -44,7 +44,7 @@ class NetworkTestCase(TestCase):
         self.assertEqual(user_a.following.count(), 2)
         self.assertEqual(user_b.following.count(), 1)
         self.assertEqual(user_c.following.count(), 0)
-        
+
 
     # 2. Test followers count
     def test_follower_count(self):
